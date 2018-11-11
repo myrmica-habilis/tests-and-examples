@@ -1,7 +1,7 @@
 #!/usr/bin/python
 # coding: utf-8
 
-# via https://stackoverflow.com/questions/52291585/pyside2-typeerror-bytes-object-cannot-be-interpreted-as-an-integer
+# via https://stackoverflow.com/questions/52291585
 
 from PySide2.QtCore import QByteArray, QBuffer
 

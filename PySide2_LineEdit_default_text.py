@@ -1,7 +1,7 @@
 #!/usr/bin/python
 # coding: utf-8
 
-# via https://stackoverflow.com/questions/53100965/qt5-pyside2-lineedit
+# via https://stackoverflow.com/questions/53100965
 
 from PySide2 import QtWidgets
 import time

@@ -15,6 +15,8 @@ class MainWidget(QtWidgets.QWidget):
                 # this lambda works
             # button.clicked.connect(lambda checked, c=color: self.set_bg_color(c))
                 # this raises TypeError: <lambda>() missing 1 required positional argument: 'checked'
+            # button.clicked[bool].connect(lambda checked, c=color: self.set_bg_color(c))
+                # this works
             layout.addWidget(button)
 
         horizLine = QtWidgets.QLabel()
@@ -27,7 +29,6 @@ class MainWidget(QtWidgets.QWidget):
         for color in ["yellow", "gold", "silver"]:
             button = QtWidgets.QPushButton(color)
             button.clicked.connect(functools.partial(self.set_bg_color, color))
-                # this works
             layout.addWidget(button)
 
         self.setLayout(layout)

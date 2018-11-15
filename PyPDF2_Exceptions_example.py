@@ -1,7 +1,8 @@
 import os, PyPDF2
 
-filenames = ["pdf/not_a_PDF_file.pdf", "pdf/non-existing-file.pdf", "pdf/Tire_size_chart_ENG.pdf", "pdf/tldr-book.pdf"]
+filenames = ["pdf/not_a_PDF_file.pdf", "pdf/non-existent-file.pdf", "pdf/Tire_size_chart_ENG.pdf", "pdf/tldr-book.pdf"]
 
+# EXAMPLE 1
 # two unsafe actions, nested in separate try statements:
 
 for filename in filenames:
@@ -23,6 +24,7 @@ for filename in filenames:
         else:
             print("This file has {} pages.".format(pages))
 
+# EXAMPLE 2
 # two unsafe actions, both in one try clause:
 
 for filename in filenames:
@@ -36,10 +38,3 @@ for filename in filenames:
         print(err)
     else:
         print("This file has {} pages.".format(pages))
-
-# Source of the testing files:
-#
-# https://www.cateye.com/data/resources/Tire_size_chart_ENG.pdf
-# (example of a file that PyPDF2 cannot read)
-#
-# https://tldr.sh/assets/tldr-book.pdf

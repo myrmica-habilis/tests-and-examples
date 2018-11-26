@@ -281,8 +281,11 @@ class MainWindow(QtWidgets.QMainWindow):
         # jednotlivé položky menu s nabízenými styly
         for key in QtWidgets.QStyleFactory.keys():
             styleMenuItem = QtWidgets.QAction(key, self)
-            styleMenuItem.triggered.connect(functools.partial(self.setStyle, key))    # funguje
-            # styleMenuItem.triggered.connect(lambda key=key: self.setStyle(key))     # nefunguje
+            # styleMenuItem.triggered.connect(lambda key=key: self.setStyle(key))                 # nefunguje
+            styleMenuItem.triggered[bool].connect(lambda checked, key=key: self.setStyle(key))    # funguje
+            # styleMenuItem.triggered.connect(lambda *args, key=key: self.setStyle(key))          # funguje
+            # styleMenuItem.triggered[bool].connect(lambda *args, key=key: self.setStyle(key))    # funguje
+            # styleMenuItem.triggered.connect(functools.partial(self.setStyle, key))              # funguje
             styleMenu.addAction(styleMenuItem)
 
         # tlačítko Quit

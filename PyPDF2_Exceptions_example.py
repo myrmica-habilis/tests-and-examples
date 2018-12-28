@@ -1,6 +1,8 @@
-import os, PyPDF2
+import os
+import PyPDF2
 
-filenames = ["pdf/not_a_PDF_file.pdf", "pdf/non-existent-file.pdf", "pdf/Tire_size_chart_ENG.pdf", "pdf/tldr-book.pdf"]
+filenames = ["pdf/not_a_PDF_file.pdf", "pdf/non-existent-file.pdf",
+             "pdf/Tire_size_chart_ENG.pdf", "pdf/tldr-book.pdf"]
 
 # EXAMPLE 1
 # two unsafe actions, nested in separate try statements:
@@ -9,7 +11,7 @@ for filename in filenames:
     print("-" * 40)
     try:
         print("Trying to read:", os.path.split(filename)[1])
-        reader = PyPDF2.PdfFileReader(filename)          # potential exception #1
+        reader = PyPDF2.PdfFileReader(filename)        # potential exception #1
     except Exception as err:
         print(err)
     # or:
@@ -18,7 +20,7 @@ for filename in filenames:
     else:
         try:
             print("Trying to get number of pages...")
-            pages = reader.numPages                      # potential exception #2
+            pages = reader.numPages                    # potential exception #2
         except Exception as err:
             print(err)
         else:
@@ -31,9 +33,9 @@ for filename in filenames:
     print("-" * 40)
     try:
         print("Trying to read:", os.path.split(filename)[1])
-        reader = PyPDF2.PdfFileReader(filename)          # potential exception #1
+        reader = PyPDF2.PdfFileReader(filename)        # potential exception #1
         print("Trying to get number of pages...")
-        pages = reader.numPages                          # potential exception #2
+        pages = reader.numPages                        # potential exception #2
     except Exception as err:
         print(err)
     else:

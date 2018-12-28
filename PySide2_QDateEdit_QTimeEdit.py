@@ -1,5 +1,6 @@
 from PySide2 import QtWidgets
 
+
 class MainWidget(QtWidgets.QWidget):
 
     def __init__(self):
@@ -27,9 +28,11 @@ class MainWidget(QtWidgets.QWidget):
         self.show()
         app.exec_()
 
+
 def main():
     app = QtWidgets.QApplication()
     MainWidget().run(app)
+
 
 if __name__ == '__main__':
     main()

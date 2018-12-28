@@ -12,7 +12,7 @@ input_image = BmpImagePlugin.BmpImageFile("img/tea.bmp")
 image_data = input_image.tobytes()
 
 # encrypt
-image_data = bytes(a^b for a, b in zip(image_data, cycle(keys)))
+image_data = bytes(a ^ b for a, b in zip(image_data, cycle(keys)))
 
 # create new image, update with encrypted data and save
 output_image = input_image.copy()

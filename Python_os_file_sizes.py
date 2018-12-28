@@ -4,9 +4,11 @@ import os
 # by os.path.getsize() and os.stat().st_size,
 # and to check with the real file size
 
+
 def get_real_size(path):
     with open(path, "rb") as f:
         return len(f.read())
+
 
 total_counter = 0
 difference_counter = 0
@@ -27,5 +29,5 @@ for dir_tuple in os.walk(os.curdir):
     if total_counter > 1000:
         break
 
-print("{} files tested.\n{} differences found.".format(total_counter, 
-    difference_counter))
+print("{} files tested.\n{} differences found."
+      .format(total_counter, difference_counter))

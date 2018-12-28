@@ -11,5 +11,6 @@ testQBuffer = QBuffer(testQByteArray)
 
 assert(testQBuffer.data().data() == testByteArray)
 
-for name in ["testByteArray", "testQByteArray", "testQBuffer.data()", "testQBuffer.data().data()"]:
+for name in ["testByteArray", "testQByteArray",
+             "testQBuffer.data()", "testQBuffer.data().data()"]:
     print("{}: type {}".format(name, type(eval(name))))

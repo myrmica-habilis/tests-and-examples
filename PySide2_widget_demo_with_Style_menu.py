@@ -3,7 +3,7 @@
 
 # https://www.root.cz/clanky/nastaveni-stylu-vykreslovani-widgetu-oken-i-dialogu-v-knihovne-pyside/#k06
 
-import sys, functools
+import sys
 
 # import "jádra" frameworku Qt i modulu pro GUI
 from PySide2 import QtWidgets, QtCore, QtGui
@@ -142,7 +142,7 @@ class MainWindowContent(QtWidgets.QWidget):
             with open("01_empty_window.py", "r", encoding="utf-8") as fin:
                 content = fin.read()
                 textEdit.insertPlainText(content)
-        except:
+        except Exception:
             pass
 
         return textEdit
@@ -246,6 +246,7 @@ class MainWindowContent(QtWidgets.QWidget):
 
         return dial
 
+
 # nový widget bude odvozen od obecného hlavního okna
 class MainWindow(QtWidgets.QMainWindow):
 
@@ -265,8 +266,7 @@ class MainWindow(QtWidgets.QMainWindow):
         menubar = self.menuBar()
 
         # příkaz File/Quit
-        fileQuitItem = QtWidgets.QAction(QtGui.QIcon('icons/application-exit.png'),
-                                     '&Quit', self)
+        fileQuitItem = QtWidgets.QAction(QtGui.QIcon('icons/application-exit.png'), '&Quit', self)
         fileQuitItem.triggered.connect(self.close)
         fileQuitItem.setStatusTip('Quit the application')
         fileQuitItem.setShortcut('Ctrl+Q')
@@ -289,14 +289,18 @@ class MainWindow(QtWidgets.QMainWindow):
             styleMenu.addAction(styleMenuItem)
 
         # tlačítko Quit
-        quitAction = QtWidgets.QAction(QtGui.QIcon('icons/application-exit.png'),
-                                   '&Quit', self)
+        quitAction = QtWidgets.QAction(
+                         QtGui.QIcon('icons/application-exit.png'),
+                         '&Quit',
+                         self)
         quitAction.triggered.connect(self.close)
         quitAction.setStatusTip('Quit the application')
 
         # tlačítko About
-        aboutAction = QtWidgets.QAction(QtGui.QIcon('icons/dialog-information.png'),
-                                    '&About', self)
+        aboutAction = QtWidgets.QAction(
+                          QtGui.QIcon('icons/dialog-information.png'),
+                          '&About',
+                          self)
         aboutAction.triggered.connect(self.aboutDialog)
         aboutAction.setStatusTip('About this application')
 
@@ -326,10 +330,12 @@ class MainWindow(QtWidgets.QMainWindow):
         # vstup do smyčky událostí (event loop)
         app.exec_()
 
+
 def main():
-    #QtGui.QApplication.setStyle("plastique")
+    # QtGui.QApplication.setStyle("plastique")
     app = QtWidgets.QApplication(sys.argv)
     MainWindow().run(app)
+
 
 if __name__ == '__main__':
     main()

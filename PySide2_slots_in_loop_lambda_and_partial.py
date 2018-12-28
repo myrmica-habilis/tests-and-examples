@@ -1,6 +1,7 @@
 from PySide2 import QtWidgets
 import functools
 
+
 class MainWidget(QtWidgets.QWidget):
 
     def __init__(self):
@@ -11,19 +12,27 @@ class MainWidget(QtWidgets.QWidget):
 
         for color in ["orange", "magenta", "blue"]:
             button = QtWidgets.QPushButton(color)
+
+            # this lambda works:
             button.clicked.connect(lambda *args, c=color: self.set_bg_color(c))
-                # this lambda works
-            # button.clicked.connect(lambda checked, c=color: self.set_bg_color(c))
-                # this raises TypeError: <lambda>() missing 1 required positional argument: 'checked'
-            # button.clicked[bool].connect(lambda checked, c=color: self.set_bg_color(c))
-                # this works
+
+            # this raises TypeError: <lambda>() missing 1 required
+            #                        positional argument: 'checked'
+            # button.clicked.connect(lambda checked, c=color:
+            #                        self.set_bg_color(c))
+
+            # this works:
+            # button.clicked[bool].connect(lambda checked, c=color:
+            #                              self.set_bg_color(c))
             layout.addWidget(button)
 
         horizLine = QtWidgets.QLabel()
-        horizLine.setFrameStyle(QtWidgets.QFrame.HLine | QtWidgets.QFrame.Sunken)
+        horizLine.setFrameStyle(QtWidgets.QFrame.HLine
+                                | QtWidgets.QFrame.Sunken)
         layout.addWidget(horizLine)
 
-        labelPartial = QtWidgets.QLabel("Slots connected using <b>partial</b>:")
+        labelPartial = QtWidgets.QLabel(
+                           "Slots connected using <b>partial</b>:")
         layout.addWidget(labelPartial)
 
         for color in ["yellow", "gold", "silver"]:
@@ -40,9 +49,11 @@ class MainWidget(QtWidgets.QWidget):
         self.show()
         app.exec_()
 
+
 def main():
     app = QtWidgets.QApplication()
     MainWidget().run(app)
+
 
 if __name__ == '__main__':
     main()

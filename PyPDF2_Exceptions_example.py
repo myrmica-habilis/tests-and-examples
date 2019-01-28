@@ -15,7 +15,7 @@ for filename in filenames:
     except Exception as err:
         print(err)
     # or:
-    # except:
+    # except Exception:
     #     print(sys.exc_info()[1])
     else:
         try:
